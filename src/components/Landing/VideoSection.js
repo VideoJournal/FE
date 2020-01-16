@@ -90,7 +90,7 @@ const Root = styled.div`
     text-align: center;
 
     h1 {
-      margin: 144px auto 32px;
+      margin: 0 auto 32px;
       font-size: 38px;
       line-height: 46px;
       color: #0d1a26;
