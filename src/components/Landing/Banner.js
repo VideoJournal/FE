@@ -10,14 +10,8 @@ const { Element } = BannerAnim;
 const { BgElement } = Element;
 
 class Banner extends React.PureComponent {
-  getDuration = e => {
-    if (e.key === "map") {
-      return 800;
-    }
-    return 1000;
-  };
   render() {
-    const { isMobile } = this.props;
+    // const { isMobile } = this.props;
     const bannerChildren = banner.map((item, i) => {
       const children = item.children.map((child, ii) => {
         const tag = child.tag === "button" ? "div" : child.tag || "p";
