@@ -9,7 +9,7 @@ function App() {
     <Layout>
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Dash path="dash" component={Dash} />
+        <Dash path="/dash" component={Dash} />
       </Switch>
     </Layout>
   );

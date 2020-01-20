@@ -14,7 +14,6 @@ export default function Header(props) {
   });
   return (
     <Root>
-
       <header {...props}>
         <Row className="nav">
           {menuChild}

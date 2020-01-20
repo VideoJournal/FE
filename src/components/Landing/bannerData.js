@@ -22,7 +22,7 @@ export const banner = [
         children: "GET Started",
         className: "banner-button",
         tag: "button",
-        link: "https://learn.lambdaschool.com/course/cs-fsw"
+        link: "/dash"
       },
       { children: "TEst text", className: "seeconf-time" }
     ]
