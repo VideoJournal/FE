@@ -2,10 +2,32 @@ import React from "react";
 import styled from "styled-components";
 
 const Dash = () => {
+  const checkUploadResult = resultEvent => {
+    if (resultEvent.event === "success") {
+      console.log(resultEvent.info.secure_url);
+    }
+  };
+
+  const widget = window.cloudinary.createUploadWidget(
+    {
+      cloudName: "dhsegkn40",
+      uploadPreset: "videoJournal"
+    },
+    (error, result) => {
+      checkUploadResult(result);
+    }
+  );
+
+  //console.log(widget);
+
+  const showWidget = widget => {
+    widget.open();
+  };
   return (
     <Root>
       <div className="banner page-wrapper">
         <h1>Test</h1>
+        <button onClick={() => showWidget(widget)}>Upload </button>
       </div>
     </Root>
   );
