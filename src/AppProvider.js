@@ -4,7 +4,8 @@ const SET_CURRENT_VIDEO = "SET_CURRENT_VIDEO";
 
 const initialState = {
   videosData: [],
-  currentVideo: ""
+  currentVideo:
+    "https://res.cloudinary.com/dhsegkn40/video/upload/v1579531872/lmta3apkt93ooulacnzo.mp4"
 };
 
 export const AppContext = createContext();

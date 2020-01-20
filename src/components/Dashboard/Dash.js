@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../AppProvider";
 import styled from "styled-components";
+import { DefaultPlayer as Video } from "react-html5video";
+import { Button } from "antd";
 
 const Dash = () => {
+  const { state, setCurentVideo } = useContext(AppContext);
+  console.log(state.currentVideo);
   const checkUploadResult = resultEvent => {
     if (resultEvent.event === "success") {
       console.log(resultEvent.info.secure_url);
+      setCurentVideo(resultEvent.info.secure_url);
     }
   };
 
@@ -18,17 +24,24 @@ const Dash = () => {
     }
   );
 
-  //console.log(widget);
-
   const showWidget = widget => {
     widget.open();
   };
   return (
     <Root>
-      <div className="banner page-wrapper">
-        <h1>Test</h1>
-        <button onClick={() => showWidget(widget)}>Upload </button>
-      </div>
+      <Main className="banner page-wrapper">
+        <h1>Upload Your Video</h1>
+        <Button onClick={() => showWidget(widget)}>Upload</Button>
+      </Main>
+      <VideoWrapper
+        loop
+        muted
+        controls={["PlayPause", "Seek", "Time", "Volume", "Fullscreen"]}
+        // poster={isMobile ? item.imgMobile : item.img}
+        key="video"
+      >
+        <source src={state.currentVideo} />
+      </VideoWrapper>
     </Root>
   );
 };
@@ -36,10 +49,8 @@ const Dash = () => {
 export default Dash;
 
 const Root = styled.div`
-  height: 80%;
   .banner {
     background-size: auto 459px;
-
     background: url(https://gw.alipayobjects.com/zos/rmsportal/okhVRKJXxQpbpKGtKneS.svg)
       no-repeat center top;
     background-size: contain;
@@ -51,6 +62,21 @@ const Root = styled.div`
   .page-wrapper {
     width: 100%;
     will-change: transform;
-    min-height: 550px;
+    min-height: 500px;
+  }
+`;
+
+const VideoWrapper = styled(Video)`
+  margin: 0 20px;
+`;
+
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  h1 {
+    color: white;
   }
 `;
