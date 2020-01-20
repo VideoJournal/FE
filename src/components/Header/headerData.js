@@ -1,9 +1,11 @@
 export const header = [
   {
-    title: "Home"
+    title: "Home",
+    link: ""
   },
   {
-    title: "About"
+    title: "Dashboard",
+    link: "/dash"
   },
   {
     title: "Profile"
