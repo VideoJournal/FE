@@ -5,10 +5,13 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "antd/dist/antd.css";
 import { BrowserRouter as Router } from "react-router-dom";
+import AppProvider from "./AppProvider";
 
 ReactDOM.render(
   <Router>
-    <App />
+    <AppProvider>
+      <App />
+    </AppProvider>
   </Router>,
   document.getElementById("root")
 );

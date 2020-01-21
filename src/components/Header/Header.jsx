@@ -8,13 +8,12 @@ export default function Header(props) {
   const menuChild = header.map((item, i) => {
     return (
       <Col key={i.toString()} span={6}>
-        <Link className="nav-title">{item.title}</Link>
+        <Link className="nav-title" to={item.link}>{item.title}</Link>
       </Col>
     );
   });
   return (
     <Root>
-
       <header {...props}>
         <Row className="nav">
           {menuChild}
