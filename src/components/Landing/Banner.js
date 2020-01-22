@@ -1,10 +1,10 @@
-import "rc-banner-anim/assets/index.css";
-import React from "react";
-import QueueAnim from "rc-queue-anim";
-import BannerAnim from "rc-banner-anim";
-import { Button } from "antd";
-import { banner } from "./bannerData";
-import styled from "styled-components";
+import 'rc-banner-anim/assets/index.css';
+import React from 'react';
+import QueueAnim from 'rc-queue-anim';
+import BannerAnim from 'rc-banner-anim';
+import { Button } from 'antd';
+import { banner } from './bannerData';
+import styled from 'styled-components';
 
 const { Element } = BannerAnim;
 const { BgElement } = Element;
@@ -14,11 +14,11 @@ class Banner extends React.PureComponent {
     // const { isMobile } = this.props;
     const bannerChildren = banner.map((item, i) => {
       const children = item.children.map((child, ii) => {
-        const tag = child.tag === "button" ? "div" : child.tag || "p";
+        const tag = child.tag === 'button' ? 'div' : child.tag || 'p';
         const childrenToRender =
-          child.tag === "button" ? (
+          child.tag === 'button' ? (
             <Button>
-              <a href={child.link} target="_blank">
+              <a href={child.link} target="_blank" rel="noopener noreferrer">
                 {child.children}
               </a>
             </Button>
@@ -47,8 +47,8 @@ class Banner extends React.PureComponent {
           <QueueAnim
             key="text"
             className={item.className}
-            ease={["easeOutCubic", "easeInQuad"]}
-            type={item.queueAnim || "bottom"}
+            ease={['easeOutCubic', 'easeInQuad']}
+            type={item.queueAnim || 'bottom'}
           >
             {children}
           </QueueAnim>
@@ -64,7 +64,7 @@ class Banner extends React.PureComponent {
               type="across"
               duration={550}
               ease="easeInOutQuint"
-              style={{ height: "580px" }}
+              style={{ height: '580px' }}
             >
               {bannerChildren}
             </BannerAnim>

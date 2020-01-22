@@ -11,6 +11,7 @@ export const header = [
     title: "Profile"
   },
   {
-    title: "Logout"
+    title: "Login",
+    link: "/login"
   }
 ];

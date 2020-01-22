@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "antd/dist/antd.css";
+import './tailwind.css';
 import { BrowserRouter as Router } from "react-router-dom";
 import AppProvider from "./AppProvider";
 
