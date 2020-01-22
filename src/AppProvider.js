@@ -1,12 +1,25 @@
 import React, { useReducer, createContext, useEffect } from "react";
+import uuid from "uuid";
 
 const ADD_VIDEO = "ADD_VIDEO";
 
 const initialState = {
   videosData: [
-    "https://res.cloudinary.com/dhsegkn40/video/upload/v1579702236/wkiemsc79uclgxa8ekz6.mp4",
-    "https://res.cloudinary.com/dhsegkn40/video/upload/v1579702236/wkiemsc79uclgxa8ekz6.mp4",
-    "https://res.cloudinary.com/dhsegkn40/video/upload/v1579702236/wkiemsc79uclgxa8ekz6.mp4"
+    {
+      id: uuid(),
+      videoUrl:
+        "https://res.cloudinary.com/dhsegkn40/video/upload/v1579702236/wkiemsc79uclgxa8ekz6.mp4"
+    },
+    {
+      id: uuid(),
+      videoUrl:
+        "https://res.cloudinary.com/dhsegkn40/video/upload/v1579702236/wkiemsc79uclgxa8ekz6.mp4"
+    },
+    {
+      id: uuid(),
+      videoUrl:
+        "https://res.cloudinary.com/dhsegkn40/video/upload/v1579702236/wkiemsc79uclgxa8ekz6.mp4"
+    }
   ]
 };
 

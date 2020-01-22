@@ -21,7 +21,7 @@ const VideoList = () => {
               // poster={isMobile ? item.imgMobile : item.img}
               key={idx}
             >
-              <source src={vid} />
+              <source src={vid.videoUrl} />
             </Video>
           );
         })}
