@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { AppContext } from "../../AppProvider";
 import { DefaultPlayer as Video } from "react-html5video";
 import styled from "styled-components";
+import { Button } from "antd";
+import { Link } from "react-router-dom";
 
 const VideoList = () => {
   const { state } = useContext(AppContext);
@@ -14,15 +16,20 @@ const VideoList = () => {
         {videosData.map((vid, idx) => {
           console.log(vid);
           return (
-            <Video
-              loop
-              muted
-              controls={["PlayPause", "Seek", "Time", "Volume", "Fullscreen"]}
-              // poster={isMobile ? item.imgMobile : item.img}
-              key={idx}
-            >
-              <source src={vid.videoUrl} />
-            </Video>
+            <Card>
+              <Video
+                loop
+                muted
+                controls={["PlayPause", "Seek", "Time", "Volume", "Fullscreen"]}
+                // poster={isMobile ? item.imgMobile : item.img}
+                key={idx}
+              >
+                <source src={vid.videoUrl} />
+              </Video>
+              <Link to={`/video/${vid.id}`}>
+                <Button>See More About the Video</Button>
+              </Link>
+            </Card>
           );
         })}
       </Grid>
@@ -44,4 +51,10 @@ const Grid = styled.div`
   grid-template-columns: repeat(3, 400px);
   justify-items: center;
   gap: 50px;
+`;
+
+const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
