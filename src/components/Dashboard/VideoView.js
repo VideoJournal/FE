@@ -14,7 +14,7 @@ const VideoView = ({ src }) => {
         // poster={isMobile ? item.imgMobile : item.img}
         key="video"
       >
-        <source src="https://res.cloudinary.com/dhsegkn40/video/upload/v1579702236/wkiemsc79uclgxa8ekz6.mp4" />
+        <source src="https://res.cloudinary.com/dhsegkn40/video/upload/v1579707553/bcttlvex6mb54lhvyc83.mp4" />
       </VideoWrapper>
       <CommentSection />
     </Root>
