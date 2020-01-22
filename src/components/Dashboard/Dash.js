@@ -1,16 +1,15 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../AppProvider";
 import styled from "styled-components";
-import { DefaultPlayer as Video } from "react-html5video";
 import { Button } from "antd";
+import VideoList from "./VideoList";
 
 const Dash = () => {
-  const { state, setCurentVideo } = useContext(AppContext);
-  console.log(state.currentVideo);
+  const { addVideo } = useContext(AppContext);
   const checkUploadResult = resultEvent => {
     if (resultEvent.event === "success") {
       console.log(resultEvent.info.secure_url);
-      setCurentVideo(resultEvent.info.secure_url);
+      addVideo(resultEvent.info.secure_url);
     }
   };
 
@@ -33,15 +32,7 @@ const Dash = () => {
         <h1>Upload Your Video</h1>
         <Button onClick={() => showWidget(widget)}>Upload</Button>
       </Main>
-      <VideoWrapper
-        loop
-        muted
-        controls={["PlayPause", "Seek", "Time", "Volume", "Fullscreen"]}
-        // poster={isMobile ? item.imgMobile : item.img}
-        key="video"
-      >
-        <source src={state.currentVideo} />
-      </VideoWrapper>
+      <VideoList />
     </Root>
   );
 };
@@ -64,10 +55,6 @@ const Root = styled.div`
     will-change: transform;
     min-height: 500px;
   }
-`;
-
-const VideoWrapper = styled(Video)`
-  margin: 0 20px;
 `;
 
 const Main = styled.div`
