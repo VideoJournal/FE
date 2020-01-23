@@ -1,31 +1,31 @@
 import React from 'react';
 import { Row, Col } from 'antd';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { header } from './headerData';
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export default function Header(props) {
   const menuChild = header.map((item, i) => {
     return (
-      <Col key={i.toString()} span={6}>
-        <Link className="nav-title" to={item.link}>{item.title}</Link>
+      <Col key={i.toString()} span={4}>
+        <Link className="nav-title" to={item.link}>
+          {item.title}
+        </Link>
       </Col>
     );
   });
   return (
     <Root>
       <header {...props}>
-        <Row className="nav">
-          {menuChild}
-        </Row>
+        <Row className="nav">{menuChild}</Row>
       </header>
     </Root>
   );
 }
 
 const Root = styled.nav`
-  .nav{
-    max-width: 424px;
+  .nav {
+    max-width: 600px;
     text-align: center;
     margin: auto;
     display: block;
@@ -35,12 +35,12 @@ const Root = styled.nav`
     &:hover {
       border-top-color: #fff;
     }
-    .nav-title{
+    .nav-title {
       cursor: pointer;
-    color: darkred;
-    &:hover {
-      color: green;
+      color: darkred;
+      &:hover {
+        color: green;
+      }
     }
   }
-  }
-`
+`;
