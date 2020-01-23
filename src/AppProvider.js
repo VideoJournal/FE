@@ -1,22 +1,38 @@
 import React, { useReducer, createContext, useEffect } from "react";
+import uuid from "uuid";
 
-const SET_CURRENT_VIDEO = "SET_CURRENT_VIDEO";
+const ADD_VIDEO = "ADD_VIDEO";
 
 const initialState = {
-  videosData: [],
-  currentVideo:
-    "https://res.cloudinary.com/dhsegkn40/video/upload/v1579531872/lmta3apkt93ooulacnzo.mp4"
+  videosData: [
+    {
+      id: uuid(),
+      videoUrl:
+        "https://res.cloudinary.com/dhsegkn40/video/upload/v1579707553/bcttlvex6mb54lhvyc83.mp4"
+    },
+    {
+      id: uuid(),
+      videoUrl:
+        "https://res.cloudinary.com/dhsegkn40/video/upload/v1579707553/bcttlvex6mb54lhvyc83.mp4"
+    },
+    {
+      id: uuid(),
+      videoUrl:
+        "https://res.cloudinary.com/dhsegkn40/video/upload/v1579707553/bcttlvex6mb54lhvyc83.mp4"
+    }
+  ]
 };
 
 export const AppContext = createContext();
 
 const reducer = (state, { type, payload }) => {
   switch (type) {
-    case SET_CURRENT_VIDEO:
+    case ADD_VIDEO:
       return {
         ...state,
-        currentVideo: payload
+        videosData: state.videosData.concat(payload)
       };
+
     default:
       return state;
   }
@@ -30,11 +46,11 @@ const AppProvider = ({ children }) => {
     //fetchVideoData();
   }, []);
 
-  const setCurentVideo = currentVideoURL => {
-    dispatch({ type: SET_CURRENT_VIDEO, payload: currentVideoURL });
+  const addVideo = currentVideoURL => {
+    dispatch({ type: ADD_VIDEO, payload: currentVideoURL });
   };
 
-  const value = { state, setCurentVideo };
+  const value = { state, addVideo };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
