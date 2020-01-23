@@ -8,10 +8,15 @@ export const header = [
     link: "/dash"
   },
   {
-    title: "Profile"
+    title: "Profile",
+    link: "/"
   },
   {
     title: "Login",
     link: "/login"
+  },
+  {
+    title: "Signup",
+    link: "/signup"
   }
 ];
