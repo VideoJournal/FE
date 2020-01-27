@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
-import { postRequest } from '../Helpers/utilities';
-import styled from 'styled-components';
-import { notification } from 'antd';
+import React, { useState } from "react";
+import { postRequest } from "../Helpers/utilities";
+import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+import { notification } from "antd";
 export default function Signup() {
   const [user, setUser] = useState({
-    email: '',
-    password: '',
-    userName: '',
-    name: ''
+    email: "",
+    password: "",
+    userName: "",
+    name: ""
   });
+  let history = useHistory();
+
   const onChangeHandler = e => {
     const value = e.target.value;
     const name = e.target.name;
@@ -16,16 +19,17 @@ export default function Signup() {
   };
   const signUpHandler = () => {
     if (user.email.length > 1 && user.password.length > 1) {
-      const response = postRequest('signup', user);
+      const response = postRequest("signup", user);
       if (response.status) {
-        localStorage.setItem('user-token', response.data.token);
+        localStorage.setItem("user-token", response.data.token);
+        history.push("/dash");
         return notification.success({
-          message: 'Success',
-          description: 'Login Successful'
+          message: "Success",
+          description: "Login Successful"
         });
       }
       return notification.error({
-        message: 'Error',
+        message: "Error",
         description: response
       });
     }

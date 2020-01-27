@@ -1,5 +1,6 @@
 import React, { useReducer, createContext, useEffect } from "react";
 import uuid from "uuid";
+import { axiosWithAuth } from "./components/Helpers/axios";
 
 const ADD_VIDEO = "ADD_VIDEO";
 
@@ -44,10 +45,19 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     //not yes implmemented
     //fetchVideoData();
+    //console.log(ls.get());
   }, []);
 
-  const addVideo = currentVideoURL => {
-    dispatch({ type: ADD_VIDEO, payload: currentVideoURL });
+  const addVideo = async currentVideoURL => {
+    try {
+      const { data } = await axiosWithAuth().post("/api/video", {
+        videos: [currentVideoURL],
+        description: "Video"
+      });
+      dispatch({ type: ADD_VIDEO, payload: data.data });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const value = { state, addVideo };
