@@ -1,9 +1,12 @@
-import React, { useState } from 'react';
-import { postRequest } from '../Helpers/utilities';
-import styled from 'styled-components';
-import { notification } from 'antd';
+import React, { useState } from "react";
+import { postRequest } from "../Helpers/utilities";
+import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+import { notification } from "antd";
 export default function Login() {
-  const [user, setUser] = useState({ email: '', password: '' });
+  const [user, setUser] = useState({ email: "", password: "" });
+  let history = useHistory();
+
   const onChangeHandler = e => {
     const value = e.target.value;
     const name = e.target.name;
@@ -11,16 +14,17 @@ export default function Login() {
   };
   const loginHandler = async () => {
     if (user.email.length > 1 && user.password.length > 1) {
-      const response = await postRequest('signin', user);
+      const response = await postRequest("signin", user);
       if (response.status) {
-        localStorage.setItem('user-token', response.data.token);
+        localStorage.setItem("user-token", response.data.token);
+        history.push("/dash");
         return notification.success({
-          message: 'Success',
-          description: 'Login Successful'
+          message: "Success",
+          description: "Login Successful"
         });
       }
       return notification.error({
-        message: 'Error',
+        message: "Error",
         description: response
       });
     }
