@@ -1,4 +1,4 @@
-import { isTokenExpired } from "./authToken";
+import { isTokenExpired } from "./tockenVerification";
 
 const KEY = "user-token";
 
@@ -15,16 +15,18 @@ export default {
   get: function() {
     try {
       const item = localStorage.getItem(KEY);
+      //console.log(item);
       if (item === null) {
         return undefined;
       } else {
-        const isExpired = isTokenExpired(item.token);
-        if (isExpired) {
-          this.clear();
-          return undefined;
-        }
+        // const isExpired = isTokenExpired(item.token);
+        // if (isExpired) {
+        //   this.clear();
+        //   return undefined;
+        // }
+        //return JSON.parse(item);
+        return item;
       }
-      return JSON.parse(item);
     } catch {
       return undefined;
     }
