@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "^3.26.7",
     "axios": "^0.19.2",
+    "jwt-decode": "^2.2.0",
     "rc-banner-anim": "^2.4.3",
     "rc-queue-anim": "^1.8.3",
     "rc-scroll-anim": "^2.7.4",
