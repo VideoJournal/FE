@@ -2,16 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default () => (
-  <Button>
+  <Anchor href="https://google.com">
     <img
       src="https://img.icons8.com/color/48/000000/google-logo.png"
       alt="Google"
     ></img>
     <p>Sign in with Google</p>
-  </Button>
+  </Anchor>
 );
 
-const Button = styled.button`
+const Anchor = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -35,6 +35,8 @@ const Button = styled.button`
 
   p {
     font-size: 1rem;
+    font-weight: 500;
     margin-top: 12px;
+    color: #6d6d6d;
   }
 `;
