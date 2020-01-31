@@ -20,12 +20,13 @@ const Button = styled.button`
   padding: 3px 5px;
   width: 13rem;
   height: 2.5rem;
-  border: 1px solid black;
+  border: 1px solid #ffffff;
   border-radius: 5px;
+  margin: 20px 0;
 
   -webkit-box-shadow: 0px 3px 5px 0px rgba(97, 97, 97, 1);
   -moz-box-shadow: 0px 3px 5px 0px rgba(97, 97, 97, 1);
-  box-shadow: 0px 3px 5px 0px rgba(97, 97, 97, 1);
+  box-shadow: 0px 3px 3px 0px rgba(97, 97, 97, 1);
 
   img {
     width: 20px;
