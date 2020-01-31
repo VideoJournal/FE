@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import { postRequest } from "../Helpers/utilities";
-import { useHistory } from "react-router-dom";
-import styled from "styled-components";
-import { notification } from "antd";
+import React, { useState } from 'react';
+import { postRequest } from '../Helpers/utilities';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+import { notification } from 'antd';
+import GoogleButton from '../GoogleButton/GoogleButton';
+
 export default function Signup() {
   const [user, setUser] = useState({
-    email: "",
-    password: "",
-    userName: "",
-    name: ""
+    email: '',
+    password: '',
+    userName: '',
+    name: '',
   });
   let history = useHistory();
 
@@ -19,18 +21,18 @@ export default function Signup() {
   };
   const signUpHandler = () => {
     if (user.email.length > 1 && user.password.length > 1) {
-      const response = postRequest("signup", user);
+      const response = postRequest('signup', user);
       if (response.status) {
-        localStorage.setItem("user-token", response.data.token);
-        history.push("/dash");
+        localStorage.setItem('user-token', response.data.token);
+        history.push('/dash');
         return notification.success({
-          message: "Success",
-          description: "Login Successful"
+          message: 'Success',
+          description: 'Login Successful',
         });
       }
       return notification.error({
-        message: "Error",
-        description: response
+        message: 'Error',
+        description: response,
       });
     }
   };
@@ -85,9 +87,11 @@ export default function Signup() {
         </div>
         <button onClick={signUpHandler}>Login</button>
       </form>
+      <GoogleButton />
     </Div>
   );
 }
+
 const Div = styled.div`
   max-width: 400px;
   margin: 0 auto;
