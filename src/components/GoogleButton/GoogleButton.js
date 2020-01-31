@@ -12,5 +12,22 @@ export default () => (
 );
 
 const Button = styled.button`
-  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #ffffff;
+  padding: 3px 5px;
+  width: 13rem;
+  border: 1px solid black;
+
+  img {
+    width: 20px;
+    margin-right: 1rem;
+  }
+
+  p {
+      font-size: 1rem;
+      margin-top: 13px;
+  }
 `;
