@@ -3,6 +3,8 @@ import { postRequest } from "../Helpers/utilities";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { notification } from "antd";
+import GoogleButton from '../GoogleButton/GoogleButton';
+
 export default function Login() {
   const [user, setUser] = useState({ email: "", password: "" });
   let history = useHistory();
@@ -58,6 +60,7 @@ export default function Login() {
         </div>
         <button onClick={loginHandler}>Login</button>
       </form>
+      <GoogleButton />
     </Div>
   );
 }
