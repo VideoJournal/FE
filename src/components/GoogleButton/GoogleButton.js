@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default () => (
-  <Anchor href="https://google.com">
+  <Anchor href="https://videojournal.herokuapp.com/auth/google">
     <img
       src="https://img.icons8.com/color/48/000000/google-logo.png"
       alt="Google"
