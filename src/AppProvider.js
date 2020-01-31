@@ -3,37 +3,26 @@ import uuid from "uuid";
 import { axiosWithAuth } from "./components/Helpers/axios";
 
 const ADD_VIDEO = "ADD_VIDEO";
+const FETCH_VIDEO = "FETCH_VIDEO";
 
 const initialState = {
-  videosData: [
-    {
-      id: uuid(),
-      videoUrl:
-        "https://res.cloudinary.com/dhsegkn40/video/upload/v1579707553/bcttlvex6mb54lhvyc83.mp4"
-    },
-    {
-      id: uuid(),
-      videoUrl:
-        "https://res.cloudinary.com/dhsegkn40/video/upload/v1579707553/bcttlvex6mb54lhvyc83.mp4"
-    },
-    {
-      id: uuid(),
-      videoUrl:
-        "https://res.cloudinary.com/dhsegkn40/video/upload/v1579707553/bcttlvex6mb54lhvyc83.mp4"
-    }
-  ]
+  videosData: []
 };
 
 export const AppContext = createContext();
 
 const reducer = (state, { type, payload }) => {
   switch (type) {
-    case ADD_VIDEO:
+    // case ADD_VIDEO:
+    //   return {
+    //     ...state,
+    //     videosData: state.videosData.concat(payload)
+    //   };
+    case FETCH_VIDEO:
       return {
         ...state,
-        videosData: state.videosData.concat(payload)
+        videosData: payload
       };
-
     default:
       return state;
   }
@@ -43,10 +32,17 @@ const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    //not yes implmemented
-    //fetchVideoData();
-    //console.log(ls.get());
+    fetchVideoData();
   }, []);
+
+  const fetchVideoData = async () => {
+    try {
+      const { data } = await axiosWithAuth().get("/api/user");
+      dispatch({ type: FETCH_VIDEO, payload: data.data.videos });
+    } catch (error) {
+      console.log("ERRORRRR", error);
+    }
+  };
 
   const addVideo = async currentVideoURL => {
     try {
@@ -54,7 +50,8 @@ const AppProvider = ({ children }) => {
         videos: [currentVideoURL],
         description: "Video"
       });
-      dispatch({ type: ADD_VIDEO, payload: data.data });
+      fetchVideoData();
+      //dispatch({ type: ADD_VIDEO, payload: data.data });
     } catch (error) {
       console.log(error);
     }

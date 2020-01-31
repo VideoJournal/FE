@@ -13,25 +13,32 @@ const VideoList = () => {
     <Root>
       <h1>Your Videos</h1>
       <Grid>
-        {videosData.map((vid, idx) => {
-          console.log(vid);
-          return (
-            <Card>
-              <Video
-                loop
-                muted
-                controls={["PlayPause", "Seek", "Time", "Volume", "Fullscreen"]}
-                // poster={isMobile ? item.imgMobile : item.img}
-                key={idx}
-              >
-                <source src={vid.videoUrl} />
-              </Video>
-              <Link to={`/video/${vid.id}`}>
-                <Button>See More About the Video</Button>
-              </Link>
-            </Card>
-          );
-        })}
+        {state.videosData.length &&
+          videosData.map((vid, idx) => {
+            console.log(vid);
+            return (
+              <Card>
+                <Video
+                  loop
+                  muted
+                  controls={[
+                    "PlayPause",
+                    "Seek",
+                    "Time",
+                    "Volume",
+                    "Fullscreen"
+                  ]}
+                  // poster={isMobile ? item.imgMobile : item.img}
+                  key={idx}
+                >
+                  <source src={vid.videos[0]} />
+                </Video>
+                <Link to={`/video/${vid.id}`}>
+                  <Button>See More About the Video</Button>
+                </Link>
+              </Card>
+            );
+          })}
       </Grid>
     </Root>
   );
