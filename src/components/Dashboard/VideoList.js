@@ -8,14 +8,12 @@ import { Link } from "react-router-dom";
 const VideoList = () => {
   const { state } = useContext(AppContext);
   const { videosData } = state;
-  console.log(videosData);
   return (
     <Root>
       <h1>Your Videos</h1>
       <Grid>
         {state.videosData.length &&
           videosData.map((vid, idx) => {
-            console.log(vid);
             return (
               <Card>
                 <Video
@@ -33,7 +31,7 @@ const VideoList = () => {
                 >
                   <source src={vid.videos[0]} />
                 </Video>
-                <Link to={`/video/${vid.id}`}>
+                <Link to={`/video/${vid._id}`}>
                   <Button>See More About the Video</Button>
                 </Link>
               </Card>

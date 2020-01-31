@@ -1,12 +1,14 @@
 import React, { useReducer, createContext, useEffect } from "react";
-import uuid from "uuid";
+import { notification } from "antd";
 import { axiosWithAuth } from "./components/Helpers/axios";
 
-const ADD_VIDEO = "ADD_VIDEO";
+// const ADD_VIDEO = "ADD_VIDEO";
+// const ADD_COMMENT = "ADD_COMMENT";
 const FETCH_VIDEO = "FETCH_VIDEO";
 
 const initialState = {
-  videosData: []
+  videosData: [],
+  comments: []
 };
 
 export const AppContext = createContext();
@@ -50,14 +52,43 @@ const AppProvider = ({ children }) => {
         videos: [currentVideoURL],
         description: "Video"
       });
+      notification.success({
+        message: "Success",
+        description: "Your Video has been added"
+      });
       fetchVideoData();
       //dispatch({ type: ADD_VIDEO, payload: data.data });
     } catch (error) {
+      notification.success({
+        message: "Error",
+        description: "Error uploding your video"
+      });
       console.log(error);
     }
   };
 
-  const value = { state, addVideo };
+  const addComment = async (comment, videoId) => {
+    try {
+      const { data } = await axiosWithAuth().post("/api/video", {
+        comment: comment,
+        video: videoId
+      });
+      console.log(data);
+      notification.success({
+        message: "Success",
+        description: "Your Comment has been added"
+      });
+      fetchVideoData();
+    } catch (error) {
+      console.log(error);
+      notification.success({
+        message: "Error",
+        description: "Error adding a comment"
+      });
+    }
+  };
+
+  const value = { state, addVideo, addComment };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
