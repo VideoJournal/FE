@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default () => (
+export default ({ usage }) => (
   <Anchor href="https://videojournal.herokuapp.com/auth/google">
     <img
       src="https://img.icons8.com/color/48/000000/google-logo.png"
       alt="Google"
     ></img>
-    <p>Sign in with Google</p>
+    <p>{usage} with Google</p>
   </Anchor>
 );
 

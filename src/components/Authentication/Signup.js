@@ -87,7 +87,7 @@ export default function Signup() {
         </div>
         <button onClick={signUpHandler}>Login</button>
       </form>
-      <GoogleButton />
+      <GoogleButton usage={"Sign up"} />
     </Div>
   );
 }
